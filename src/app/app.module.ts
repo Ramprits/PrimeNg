@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { DataTableModule } from 'primeng/primeng';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +19,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
+    DataTableModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule.enablePersistence()
   ],

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,9 +8,11 @@ import { AngularFirestore } from 'angularfire2/firestore';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  items: Observable<any[]>;
+  employeeCollectionRef: AngularFirestoreCollection<any>;
+  employees: Observable<any[]>;
   constructor(db: AngularFirestore) {
-    this.items = db.collection('employees').valueChanges();
+    this.employeeCollectionRef = db.collection<any>('employees');
+    this.employees = this.employeeCollectionRef.valueChanges();
   }
 
   ngOnInit() {

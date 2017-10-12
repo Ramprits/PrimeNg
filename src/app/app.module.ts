@@ -22,6 +22,7 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoService } from './services/todo.service';
 import { TodoEditComponent } from './components/todo-edit/todo-edit.component';
+import { LoggerService } from './services/logger.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { TodoEditComponent } from './components/todo-edit/todo-edit.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule.enablePersistence()
   ],
-  providers: [EmployeeService, LocalHostService, AuthService, TodoService],
+  providers: [EmployeeService, LocalHostService, AuthService, TodoService, LoggerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

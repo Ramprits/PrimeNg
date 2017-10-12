@@ -1,0 +1,8 @@
+<div class="container">
+  <p-panel header="Todo List">
+    <div class="list-group" *ngFor="let todo of todos">
+      <a [routerLink]="['/todos', todo.id]" class="list-group-item">
+        {{todo.title}}</a>
+    </div>
+  </p-panel>
+</div>

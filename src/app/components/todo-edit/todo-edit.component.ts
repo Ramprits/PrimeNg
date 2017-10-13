@@ -19,7 +19,7 @@ export class TodoEditComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.title.setTitle(`Edit Todo ${VERSION.full}`)
+    this.title.setTitle(`Edit Todo`)
     const todoId: number = parseInt(this.router.snapshot.params['id']);
     this.todoService.getTodo(todoId).subscribe(x => { this.todo = x; },
       err => console.log(err),

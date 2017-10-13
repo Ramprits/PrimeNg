@@ -1,7 +1,14 @@
-<div class="container">
-  <p-dataTable [value]="employees | async">
-    <p-column field="name" header="Name" [sortable]="true"></p-column>
-    <p-column field="location" header="Location" [sortable]="true"></p-column>
-    <p-column field="email" header="Email" [sortable]="true"></p-column>
-  </p-dataTable>
-</div>
+<p-panel header="Employees">
+  <div class="container">
+    <p-dataTable [value]="employees | async" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,15,20]" [reorderableColumns]="true"
+      columnResizeMode="fit" [resizableColumns]="true">
+      <p-header>
+        <strong class="right">List of Employees</strong>
+      </p-header>
+      <p-column selectionMode="multiple" [style]="{'width':'10%'}" styleClass="selectBoxColumn"></p-column>
+      <p-column field="name" header="Name" [sortable]="true"></p-column>
+      <p-column field="location" header="Location" [sortable]="true"></p-column>
+      <p-column field="email" header="Email" [sortable]="true"></p-column>
+    </p-dataTable>
+  </div>
+</p-panel>

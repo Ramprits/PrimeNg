@@ -7,5 +7,7 @@ import { Observable } from 'rxjs/Rx';
 export class EmployeeService {
 
   constructor(private http: HttpClient) { }
-
+  getCustomers(){
+    
+  }
 }

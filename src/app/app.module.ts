@@ -17,7 +17,6 @@ import { EmployeeService } from './services/employee.service';
 import { LocalHostService } from './services/local-host.service';
 // tslint:disable-next-line:max-line-length
 import { MenuModule, PanelModule, ChartModule, InputTextModule, ButtonModule, InputMaskModule, InputTextareaModule, EditorModule, CalendarModule, RadioButtonModule, FieldsetModule, DropdownModule, MultiSelectModule, ListboxModule, SpinnerModule, SliderModule, RatingModule, DataTableModule, ContextMenuModule, TabViewModule, DialogModule, StepsModule, ScheduleModule, TreeModule, GMapModule, DataGridModule, TooltipModule, ConfirmationService, ConfirmDialogModule, GrowlModule, DragDropModule, GalleriaModule } from 'primeng/primeng';
-import { AuthService } from './auth/auth.service';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoService } from './services/todo.service';
@@ -26,6 +25,7 @@ import { LoggerService } from './services/logger.service';
 import { AuthorComponent } from './components/author/author.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 import { CustomerService } from './services/customer.service';
+import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
 
 @NgModule({
   declarations: [
@@ -36,14 +36,17 @@ import { CustomerService } from './services/customer.service';
     TodoListComponent,
     TodoEditComponent,
     AuthorComponent,
-    CustomerListComponent
+    CustomerListComponent,
+    CreateCustomerComponent
   ],
   imports: [
     HttpClientModule,
+    ButtonModule,
     BrowserModule,
     BrowserAnimationsModule,
     MenuModule,
     PanelModule,
+    DialogModule,
     ChartModule,
     InputTextModule,
     HttpModule,
@@ -56,7 +59,11 @@ import { CustomerService } from './services/customer.service';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule.enablePersistence()
   ],
-  providers: [EmployeeService, LocalHostService, AuthService, TodoService, LoggerService, CustomerService],
+  providers: [EmployeeService,
+    LocalHostService,
+    TodoService,
+    LoggerService,
+    CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,58 @@
-<p>
-  customer-list works!
-</p>
+<div class="container">
+  <p-dataTable [value]="customers" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,15,20]" [reorderableColumns]="true"
+    columnResizeMode="fit" selectionMode="single" [resizableColumns]="true" (onRowSelect)="onRowSelect($event)">
+    <p-header>
+      <strong class="right">Welcome to customer list</strong>
+    </p-header>
+    <p-column selectionMode="multiple" [style]="{'width':'10%'}" styleClass="selectBoxColumn"></p-column>
+    <p-column field="companyName" header="Company Name" [sortable]="true"></p-column>
+    <p-column field="contactName" header="Contact Name" [sortable]="true"></p-column>
+    <p-column field="contactTitle" header="Contact Title" [sortable]="true"></p-column>
+  </p-dataTable>
+</div>
+<hr>
+<p-dialog header="Customer Details" [(visible)]="displayDialog" [minWidth]="250" [responsive]="true" [closable]="true" [closeOnEscape]="true"
+  showEffect="fade" [modal]="true">
+  <div class="ui-grid ui-grid-responsive" *ngIf="customer">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4">
+        <label for="vin">Company Name</label>
+      </div>
+      <div class="ui-grid-col-8">
+        <input pInputText id="companyName" [(ngModel)]="customer.companyName" />
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4">
+        <label for="year">Contact Name</label>
+      </div>
+      <div class="ui-grid-col-8">
+        <input pInputText id="year" [(ngModel)]="customer.contactName" />
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4">
+        <label for="brand">Contact Title</label>
+      </div>
+      <div class="ui-grid-col-8">
+        <input pInputText id="contactTitle" [(ngModel)]="customer.contactTitle" />
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4">
+        <label for="color">City</label>
+      </div>
+      <div class="ui-grid-col-8">
+        <input pInputText id="city" [(ngModel)]="customer.city" />
+      </div>
+    </div>
+  </div>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+      <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<button type="button" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show"></button>

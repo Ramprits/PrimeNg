@@ -10,13 +10,17 @@ import { CustomerDto } from '../../model/CustomerModel/CustomerDto';
 export class CustomerListComponent implements OnInit {
   customers: CustomerDto[];
   display: boolean = false;
+  loading: boolean = false;
   displayDialog: boolean = false;
   newCustomer: boolean = false;
   customer: CustomerDto = new newCustomer();
   constructor(private customerServices: CustomerService) { }
   ngOnInit() {
-    this.customerServices.getCustomers()
-      .subscribe(customer => { this.customers = customer; });
+    this.loading = true;
+    setTimeout(() => {
+      this.customerServices.getCustomers().subscribe(customer => this.customers = customer);
+      this.loading = false;
+    }, 1000);
   }
   showDialog() {
     this.display = true;
@@ -27,16 +31,18 @@ export class CustomerListComponent implements OnInit {
     this.displayDialog = true;
   }
   cloneCustomer(c: CustomerDto): CustomerDto {
-    let car = new newCustomer();
+    let customer = new newCustomer();
     for (let prop in c) {
-      car[prop] = c[prop];
+      customer[prop] = c[prop];
     }
-    return car;
+    return customer;
   }
   delete(): void {
-
+    console.log('hello');
   }
-  save(): void { }
+  save(): void {
+    console.log('hello');
+  }
 }
 class newCustomer implements CustomerDto {
   companyName: string;

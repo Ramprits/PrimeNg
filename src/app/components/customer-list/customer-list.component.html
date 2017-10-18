@@ -1,6 +1,6 @@
 <div class="container">
-  <p-dataTable [value]="customers" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,15,20]" [reorderableColumns]="true"
-    columnResizeMode="fit" selectionMode="single" [resizableColumns]="true" (onRowSelect)="onRowSelect($event)">
+  <p-dataTable [value]="customers" [loading]="loading" loadingIcon="fa-spinner" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,15,20]"
+    [reorderableColumns]="true" columnResizeMode="fit" selectionMode="single" [resizableColumns]="true" (onRowSelect)="onRowSelect($event)">
     <p-header>
       <strong class="right">Welcome to customer list</strong>
     </p-header>
